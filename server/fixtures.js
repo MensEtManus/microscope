@@ -1,6 +1,6 @@
 if (Posts.find().count() === 0) {
     Posts.insert({
-        title: 'Welcome to microscope',
+        title: 'A Hacker, an entrepreneur, a photographer',
         author: 'Albert',
         url: 'http://alberthbyang.com'
     });

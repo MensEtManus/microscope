@@ -1,19 +1,19 @@
 if (Posts.find().count() === 0) {
     Posts.insert({
-        title: 'Welcome to microscope',
+        title: 'A Hacker, an entrepreneur, a photographer',
         author: 'Albert',
         url: 'http://alberthbyang.com'
     });
 
     Posts.insert({
-        title: 'Meteor',
-        author: 'Tom Coleman',
-        url: 'http://meteor.com'
+        title: 'Grooveshark is the new age of music streaming',
+        author: 'Albert',
+        url: 'http://grooveshark.com'
     });
 
     Posts.insert({
-        title: 'The Meteor Book',
-        author: 'Tom Coleman',
-        url: 'http://themeteorbook.com'
+        title: 'Slashdot Seriously?',
+        author: 'Albert',
+        url: 'http://slashdot.org/stories/cloud'
     });
 }

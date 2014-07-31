@@ -1,5 +1,17 @@
 Posts = new Meteor.Collection('posts');
 
+Posts.allow({
+	update: ownsDocument,
+	remove: ownsDocument
+});
+
+Posts.deny({
+	update: function(userId, post, fieldNames) {
+		//may only edit the following two fields:
+		return (_.without(fieldNames, 'url','title').length > 0);
+	}
+});
+
 Meteor.methods({
 	post: function(postAttributes) {
 		var user = Meteor.user(),
@@ -21,7 +33,7 @@ Meteor.methods({
 		}
 
 		// pick out the whitelisted keys
-		var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'), {
+		var post = _.extend(_.pick(postAttributes, 'url', 'message'), {
 			title: postAttributes.title + (this.isSimulation ? '(client)' : '(server)'),
 			userId: user._id,
 			author: user.username,
@@ -37,7 +49,7 @@ Meteor.methods({
 			}, 5 * 1000);
 			future.wait();
 		}
-		
+
 		var postId = Posts.insert(post);
 
 		return postId;

@@ -10,7 +10,9 @@ Template.postSubmit.events({
 		}
 		Meteor.call('post', post, function(error, id) {
 			if (error) {
-				throwError(error.reason);
+				//display errors to the user
+				Errors.throw(error.reason);
+				
 				if (error.error === 302) {
 					Router.go('postPage', {_id: error.details})
 				} else {
